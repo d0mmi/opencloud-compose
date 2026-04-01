@@ -42,6 +42,7 @@ directives:
   script-src:
     - '''self'''
     - '''unsafe-inline'''
+    - '''unsafe-eval'''
     - 'https://${IDP_DOMAIN|keycloak.opencloud.test}${TRAEFIK_PORT_HTTPS}/'
   style-src:
     - '''self'''
