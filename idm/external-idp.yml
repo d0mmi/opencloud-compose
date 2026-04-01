@@ -24,7 +24,7 @@ services:
       PROXY_AUTOPROVISION_ACCOUNTS: "true"
       # Use the `sub` claim from the IdP for the user ID
       # Most IdPs use the internal user ID as the `sub` claim
-      PROXY_USER_OIDC_CLAIM: "sub"
+      PROXY_USER_OIDC_CLAIM: ${PROXY_USER_OIDC_CLAIM}
       # Use the `sub` claim as identifier during autoprovisioning
       # That mitigates problems when a user is renamed in the IdP
       PROXY_AUTOPROVISION_CLAIM_USERNAME: "sub"
@@ -39,10 +39,12 @@ services:
       SETTINGS_SETUP_DEFAULT_ASSIGNMENTS: "false"
       GRAPH_ASSIGN_DEFAULT_USER_ROLE: "false"
       GRAPH_USERNAME_MATCH: "none"
+      PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: ${PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM}
       # We need to set the IDP_DOMAIN to allow the CSP rules to be set correctly
       IDP_DOMAIN: ${IDP_DOMAIN:-keycloak.opencloud.test}
       # The openCloud users need to be able to edit their account in the externa IdP
       WEB_OPTION_ACCOUNT_EDIT_LINK_HREF: ${IDP_ACCOUNT_URL}
+      PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM: ${PROXY_ROLE_ASSIGNMENT_OIDC_CLAIM}
   ldap-server:
     image: bitnamilegacy/openldap:2.6
     networks:
